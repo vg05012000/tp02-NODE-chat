@@ -25,6 +25,7 @@
   Sécuriser le service (ex: éviter les pseudos ou message trop longs)<br>
   Différencier les messages envoyés des messages reçus<br>
 </p>
+
 ## Autres idées de fonctionalités
 
 <p>
