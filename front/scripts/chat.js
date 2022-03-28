@@ -1,3 +1,4 @@
+import { fetchAPI } from './api'
 import { appendMessage } from './dom'
 
 /** @param {MessageEvent} event */
@@ -14,6 +15,12 @@ ws.onopen = function open() {
   console.log('ws connected')
 }
 ws.onmessage = handleWSMessage
+
+async function getHistory() {
+  const messages = await fetchAPI('/chat/history')
+  messages.forEach(appendMessage)
+}
+getHistory()
 
 export function initChat() {
   /** @type {HTMLFormElement | null} */
