@@ -1,5 +1,9 @@
 import { randomUUID } from 'crypto'
+<<<<<<< Updated upstream
 import { format } from 'date-fns'
+=======
+import {filter} from 'leo-profanity';
+>>>>>>> Stashed changes
 
 /**
  * @typedef {Object} Message
@@ -34,7 +38,7 @@ export async function chatRoutes(app) {
    * @param {{ type: string, payload: object }} data
    */
   function broadcast(data) {
-    console.log(
+    console.log( 
       app.websocketServer.clients.forEach((client) => {
         client.send(JSON.stringify(data))
       }),
