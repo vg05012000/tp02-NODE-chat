@@ -1,4 +1,5 @@
 import { randomUUID } from 'crypto'
+import { format } from 'date-fns'
 
 /**
  * @typedef {Object} Message
@@ -19,6 +20,7 @@ function handleNewMessage(pseudo, body) {
     id: randomUUID(),
     pseudo,
     body,
+    date: format(new Date(), 'Pp') // ajout propriété date
   }
   messages.push(message)
   return message
@@ -44,7 +46,7 @@ export async function chatRoutes(app) {
       const data = JSON.parse(message.toString('utf-8'))
       broadcast({
         type: 'NEW_MESSAGE',
-        payload: handleNewMessage(data.pseudo, data.body),
+        payload: handleNewMessage(data.pseudo, data.body, data.date), // ajout data de la date dans le payload 
       })
     })
   })
