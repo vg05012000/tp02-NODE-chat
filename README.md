@@ -22,8 +22,8 @@
 <p>
   X Sauvegarder et afficher la date de publication d'un message<br>
   X Récupérer l'historique des messages récents<br>
-  Sécuriser le service (ex: éviter les pseudos ou message trop longs)<br>
-  Différencier les messages envoyés des messages reçus<br>
+  X Sécuriser le service (ex: éviter les pseudos ou message trop longs)<br>
+  X Différencier les messages envoyés des messages reçus<br>
 </p>
 
 ## Autres idées de fonctionalités

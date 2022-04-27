@@ -10,6 +10,10 @@ export function appendMessage(data) {
   msgDate.textContent = data.date
   msgEl.append(msgDate)
 
+  const messageOwner = document.querySelector('#pseudo')?.value
+  messageOwner.p
+  msgEl.classList.add(data.pseudo === messageOwner ? 'owner' : 'receved')
+
   const pseudoSpan = document.createElement('span')
   pseudoSpan.textContent = data.pseudo
   msgEl.append(pseudoSpan)

@@ -90,3 +90,10 @@ input {
 input[type='submit'] {
   padding: 2px;
 }
+
+.owner {
+  display : flex;
+  flex-direction: column;
+  align-self: self-end;
+  
+}

@@ -42,7 +42,7 @@ export async function chatRoutes(app) {
       }),
     )
   }
-
+  
   app.get('/', { websocket: true }, (connection, req) => {
     connection.socket.on('message', (message) => {
       const data = JSON.parse(message.toString('utf-8'))
