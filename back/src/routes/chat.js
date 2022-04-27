@@ -36,7 +36,8 @@ export async function chatRoutes(app) {
    * @param {{ type: string, payload: object }} data
    */
   function broadcast(data) {
-    console.log( 
+    console.log(
+      
       app.websocketServer.clients.forEach((client) => {
         client.send(JSON.stringify(data))
       }),
@@ -46,6 +47,20 @@ export async function chatRoutes(app) {
   app.get('/', { websocket: true }, (connection, req) => {
     connection.socket.on('message', (message) => {
       const data = JSON.parse(message.toString('utf-8'))
+
+      if (data.pseudo.length > 12) {
+        connection.socket.send(
+          JSON.stringify({ type: 'ERRORBODY', payload: 'Message trop long' }),
+        )
+        return
+      }
+
+      if (data.body.length > 144) {
+        connection.socket.send(
+          JSON.stringify({ type: 'ERRORBODY', payload: 'Message trop long' }),
+        )
+        return
+      }
       broadcast({
         type: 'NEW_MESSAGE',
         payload: handleNewMessage(data.pseudo, data.body, data.date), // ajout data de la date dans le payload 
@@ -56,4 +71,5 @@ export async function chatRoutes(app) {
   app.get('/history', (request, reply) => {
     reply.send(messages.slice(-30))
   })
+  
 }
